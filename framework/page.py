@@ -35,13 +35,13 @@ class SignupPage(BasePage):
     def enter_last_name(self, name):  
         self.enter_texr(*SignupPageLocators.LAST_NAME, name)
 
-    def enter_email_address(self, email) 
+    def enter_email_address(self, email):
         self.enter_texr(*SignupPageLocators.EMAIL, email)
 
     def enter_password(self, password):
-        self.enter_texr(*SignupPageLocators.PASSWORD password)
-        self.enter_texr(*SignupPageLocators.PASSWORD_CONFIRM, password)
+        self.enter_text(*SignupPageLocators.PASSWORD, password)
+        self.enter_text(*SignupPageLocators.PASSWORD_CONFIRM, password)
 
     def click_on_accept(self):
-        element = self.driver.find_eleemnt(*SignupPageLocators.ACCEPT)
+        element = self.driver.find_elemnt(*SignupPageLocators.ACCEPT)
         element.click()

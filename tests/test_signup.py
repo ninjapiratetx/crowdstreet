@@ -1,14 +1,17 @@
 import pytest
 import os
 import framework.page
-from framework.random_number import generate_random_number``
+from framework.random_number import generate_random_number
 from selenium import webdriver
+
 
 TEST_SERVER = "https://test.crowdstreet.com/"
 FIRST_NAME = "test"
 LAST_NAME = "test"
 EMAIL = f"ninjapiratetx+{generate_random_number()}@gmail.com"
 PASSWORD = os.environ['PASSWORD']
+
+
 @pytest.fixture
 def chrome_driver(): 
    driver = webdriver.Chrome()
