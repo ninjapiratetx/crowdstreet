@@ -2,7 +2,7 @@ from element import BasePageElement
 from locators import MainPageLocators
 from locaters import SignupPageLocators
 from default import SignupPageDefault
-
+from selenium.common.exceptions import NoSuchElementException        
 
 class BasePage(object):
     """Base class to initialize the base page that will be called from all
@@ -11,8 +11,14 @@ class BasePage(object):
     def __init__(self, driver):
         self.driver = driver
 
-
 class MainPage(BasePage):
+    def registration_exists(self):
+        try:
+            self.driver.find_element(*MainPageLocators.REGISTER_BUTTON)
+        except NoSuchElementException:
+            return False
+        return True
+
     def click_register_button(self):
         register = self.driver.find_element(*MainPageLocators.REGISTER_BUTTON)
         register.click()
