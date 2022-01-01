@@ -18,10 +18,10 @@ def chrome_driver():
    driver.get(TEST_SERVER)
    yield driver
 
-def test_registration_asked(chrome_driver):
-    driver = chrome_driver
-    main_page = framework.page.MainPage(driver)
-    assert main_page.registration_exists()
+#def test_registration_asked(chrome_driver):
+#    driver = chrome_driver
+#    main_page = framework.page.MainPage(driver)
+#    assert main_page.registration_exists()
 
 def test_signup(chrome_driver):
     driver = chrome_driver
