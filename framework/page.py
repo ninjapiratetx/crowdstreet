@@ -1,6 +1,6 @@
 from element import BasePageElement
-from tests.locators import MainPageLocators
-from tests.locaters import SignupPageLocators
+from framework.locators import MainPageLocators
+from framework.locaters import SignupPageLocators
 from default import SignupPageDefault
 from selenium.common.exceptions import NoSuchElementException        
 

@@ -1,5 +1,5 @@
 import pytest
-import tests.page
+import framework.page
 from selenium import webdriver
 
 TEST_SERVER = "https://test.crowdstreet.com/"
