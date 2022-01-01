@@ -1,5 +1,8 @@
 from element import BasePageElement
 from locators import MainPageLocators
+from locaters import SignupPageLocators
+from default import SignupPageDefault
+
 
 class BasePage(object):
     """Base class to initialize the base page that will be called from all
@@ -11,8 +14,14 @@ class BasePage(object):
 
 class MainPage(BasePage):
     def click_register_button(self):
-        element = self.driver.find_element(*MainPageLocators.REGISTER_BUTTON)
-        element.click()
+        register = self.driver.find_element(*MainPageLocators.REGISTER_BUTTON)
+        register.click()
+        return SignupPage(*SignupPageDefault.FIRST_NAME)
 
 class SignupPage(BasePage):
-       
+    def enter_first_name(self, name):
+        first_name = self.driver.find_eleemnt(*SignupPageLocators.FIRST_NAME)
+        first_name.send_keys()
+    
+    def enter_last_name(self, name)  
+        pass 

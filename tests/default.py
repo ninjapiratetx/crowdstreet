@@ -9,3 +9,4 @@ class SignupPageDefault(object):
     EMAIL = f"ninjapiratetx+{generate_random_number()}@gmail.com"
     PASSWORD = os.environ[PASSWORD_OS]
     SECOND_PASSWORD = os.environ[PASSWORD_OS]
+
