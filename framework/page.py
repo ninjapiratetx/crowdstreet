@@ -1,7 +1,7 @@
-from element import BasePageElement
-from framework.locators import MainPageLocators
+from framework.element import BasePageElement
+from framework.locaters import MainPageLocators
 from framework.locaters import SignupPageLocators
-from default import SignupPageDefault
+from framework.default import SignupPageDefault
 from selenium.common.exceptions import NoSuchElementException        
 
 class BasePage(object):
@@ -29,5 +29,5 @@ class SignupPage(BasePage):
         first_name = self.driver.find_eleemnt(*SignupPageLocators.FIRST_NAME)
         first_name.send_keys()
     
-    def enter_last_name(self, name)  
+    def enter_last_name(self, name):  
         pass 

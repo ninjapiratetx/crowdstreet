@@ -21,4 +21,5 @@ pip3 install -r requirements.txt
 cd into tests:
 cd tests
 export PASSWORD=<your passowrd>
+export PYTHONPATH=$PYTHONPATH:$HOME/crowdstreet
 pytest
