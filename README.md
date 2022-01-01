@@ -8,6 +8,9 @@ https://www.python.org/downloads/
 python3 -m pip install --user --upgrade pip
 python3 -m pip install --user virtualenv
 
+## Install chromedriver
+https://www.swtestacademy.com/install-chrome-driver-on-mac/
+
 ## Create virtual environment:
 python3 -m venv .venv
 
@@ -22,4 +25,5 @@ cd into tests:
 cd tests
 export PASSWORD=<your passowrd>
 export PYTHONPATH=$PYTHONPATH:$HOME/crowdstreet
+export PATH=$PATH:<PATH TO where chromedriver is>
 pytest
