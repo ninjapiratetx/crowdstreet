@@ -40,6 +40,7 @@ class MainPage(BasePage):
         self.click_on_element(*MainPageLocators.SIGNOUT)
 
     def get_signin_text(self):
+        time.sleep(5) #I know ugly stuff.  Have to wait for the dom to load changes otherwise it's SIGN IN
         element = self.driver.find_element(*MainPageLocators.SIGNOUT)
         return element.text
 
@@ -72,7 +73,15 @@ class SignupPage(BasePage):
         wait = WebDriverWait(self.driver, 10)
         wait.until(ec.frame_to_be_available_and_switch_to_it((SignupPageLocators.CAPTCHA_FRAME[0],SignupPageLocators.CAPTCHA_FRAME[1])))
         wait.until(ec.element_to_be_clickable((SignupPageLocators.CAPTCHA_ID[0], SignupPageLocators.CAPTCHA_ID[1]))).click()
-    
+
+    def is_captcha_present(self):
+        wait = WebDriverWait(self.driver, 10)
+        try:
+            wait.until(ec.presence_of_element_located((SignupPageLocators.CAPTCHA_OBJ[0],SignupPageLocators.CAPTCHA_OBJ[1]))) 
+        except NoSuchElementException:
+            return False
+        return True
+
     def is_register_active(self):
         wait = WebDriverWait(self.driver, 100)
         self.driver.switch_to.default_content() #Python bug with losing content. 

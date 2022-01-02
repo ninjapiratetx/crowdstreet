@@ -6,13 +6,14 @@ class MainPageLocators(object):
 
     
 class SignupPageLocators(object):
-    FIRST_NAME = (By.ID,'firstName')
-    LAST_NAME = (By.ID,'lastName')
-    EMAIL = (By.ID,'email')
-    PASSWORD = (By.ID,'password')
-    PASSWORD_CONFIRM = (By.ID,'confirmPassword')
-    ACCEPT = (By.ID,'hasAgreedTos')
+    FIRST_NAME = (By.ID, 'firstName')
+    LAST_NAME = (By.ID, 'lastName')
+    EMAIL = (By.ID, 'email')
+    PASSWORD = (By.ID, 'password')
+    PASSWORD_CONFIRM = (By.ID, 'confirmPassword')
+    ACCEPT = (By.ID, 'hasAgreedTos')
     YES = (By.ID, 'accreditedYes')
+    CAPTCHA_OBJ = (By.ID, 'recaptcha-anchor-label')
     CAPTCHA_FRAME = (By.CSS_SELECTOR,"iframe[name^='a-'][src^='https://www.google.com/recaptcha/api2/anchor?']")
     CAPTCHA_ID = (By.XPATH, "//span[@id='recaptcha-anchor']")
     REGISTRATION = (By.XPATH, '*//button[@data-testid="submit-button"]')
