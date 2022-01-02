@@ -1,7 +1,7 @@
 import os
 from framework.element import BasePageElement
-from framework.locaters import MainPageLocators
-from framework.locaters import SignupPageLocators
+from framework.locators import MainPageLocators
+from framework.locators import SignupPageLocators
 from selenium.common.exceptions import NoSuchElementException        
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
@@ -60,5 +60,6 @@ class SignupPage(BasePage):
         self.click_on_element(*SignupPageLocators.YES)
 
     def click_captcha(self):
+        #found hack here: https://stackoverflow.com/questions/53917157/find-the-recaptcha-element-and-click-on-it-python-selenium
         WebDriverWait(self.driver, 10).until(ec.frame_to_be_available_and_switch_to_it((By.CSS_SELECTOR,"iframe[name^='a-'][src^='https://www.google.com/recaptcha/api2/anchor?']")))
         WebDriverWait(self.driver, 10).until(ec.element_to_be_clickable((By.XPATH, "//span[@id='recaptcha-anchor']"))).click()
