@@ -10,3 +10,4 @@ class SignupPageLocators(object):
     PASSWORD = (By.ID,'password')
     PASSWORD_CONFIRM = (By.ID,'confirmPassword')
     ACCEPT = (By.ID,'hasAgreedTos')
+    YES = (By.ID, "accreditedYes")

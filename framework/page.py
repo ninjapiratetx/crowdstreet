@@ -5,6 +5,7 @@ from framework.locaters import SignupPageLocators
 from selenium.common.exceptions import NoSuchElementException        
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
+from selenium.webdriver.common.by import By
 
 class BasePage(object):
     """Base class to initialize the base page that will be called from all
@@ -16,6 +17,10 @@ class BasePage(object):
     def enter_text(self, by, locator, data):
         element = self.driver.find_element(by, locator)
         element.send_keys(data)
+    
+    def click_on_element(self, by, locator):
+        element = self.driver.find_element(by, locator)
+        element.click()
 
 class MainPage(BasePage):
     def registration_exists(self):
@@ -26,8 +31,7 @@ class MainPage(BasePage):
         return True
 
     def click_register_button(self):
-        register = self.driver.find_element(*MainPageLocators.REGISTER_BUTTON)
-        register.click()
+        self.click_on_element(*MainPageLocators.REGISTER_BUTTON)
         return SignupPage(self.driver)
 
 class SignupPage(BasePage):
@@ -50,5 +54,11 @@ class SignupPage(BasePage):
         self.enter_text(*SignupPageLocators.PASSWORD_CONFIRM, password)
 
     def click_on_accept(self):
-        element = self.driver.find_element(*SignupPageLocators.ACCEPT)
-        element.click()
+        self.click_on_element(*SignupPageLocators.ACCEPT)
+
+    def click_on_yes_investor(self):
+        self.click_on_element(*SignupPageLocators.YES)
+
+    def click_captcha(self):
+        WebDriverWait(self.driver, 10).until(ec.frame_to_be_available_and_switch_to_it((By.CSS_SELECTOR,"iframe[name^='a-'][src^='https://www.google.com/recaptcha/api2/anchor?']")))
+        WebDriverWait(self.driver, 10).until(ec.element_to_be_clickable((By.XPATH, "//span[@id='recaptcha-anchor']"))).click()

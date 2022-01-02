@@ -31,4 +31,6 @@ def test_signup(chrome_driver):
     signup_page.enter_last_name(LAST_NAME)
     signup_page.enter_email_address(EMAIL)
     signup_page.enter_password(PASSWORD)
+    signup_page.click_on_yes_investor()
     signup_page.click_on_accept()
+    signup_page.click_captcha()
