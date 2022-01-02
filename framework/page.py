@@ -1,4 +1,6 @@
 import os
+import time
+from framework import element
 from framework.element import BasePageElement
 from framework.locators import MainPageLocators
 from framework.locators import SignupPageLocators
@@ -34,6 +36,13 @@ class MainPage(BasePage):
         self.click_on_element(*MainPageLocators.REGISTER_BUTTON)
         return SignupPage(self.driver)
 
+    def signout(self):
+        self.click_on_element(*MainPageLocators.SIGNOUT)
+
+    def get_signin_text(self):
+        element = self.driver.find_element(*MainPageLocators.SIGNOUT)
+        return element.text
+
 class SignupPage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
@@ -60,6 +69,17 @@ class SignupPage(BasePage):
         self.click_on_element(*SignupPageLocators.YES)
 
     def click_captcha(self):
-        #found hack here: https://stackoverflow.com/questions/53917157/find-the-recaptcha-element-and-click-on-it-python-selenium
-        WebDriverWait(self.driver, 10).until(ec.frame_to_be_available_and_switch_to_it((By.CSS_SELECTOR,"iframe[name^='a-'][src^='https://www.google.com/recaptcha/api2/anchor?']")))
-        WebDriverWait(self.driver, 10).until(ec.element_to_be_clickable((By.XPATH, "//span[@id='recaptcha-anchor']"))).click()
+        wait = WebDriverWait(self.driver, 10)
+        wait.until(ec.frame_to_be_available_and_switch_to_it((SignupPageLocators.CAPTCHA_FRAME[0],SignupPageLocators.CAPTCHA_FRAME[1])))
+        wait.until(ec.element_to_be_clickable((SignupPageLocators.CAPTCHA_ID[0], SignupPageLocators.CAPTCHA_ID[1]))).click()
+    
+    def is_register_active(self):
+        wait = WebDriverWait(self.driver, 100)
+        self.driver.switch_to.default_content() #Python bug with losing content. 
+        time.sleep(5) #Ugly but need to give the button time to switch to enanled.  So messy.
+        element = wait.until(ec.presence_of_element_located((SignupPageLocators.REGISTRATION[0],SignupPageLocators.REGISTRATION[1]))) 
+        return element.get_property('disabled') 
+
+    def click_register(self):
+        self.click_on_element(*SignupPageLocators.REGISTRATION)
+        return MainPage(self.driver)
