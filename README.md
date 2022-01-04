@@ -30,4 +30,5 @@ pytest
 
 # Future work
 bug - move the refresh to defaults to press Captacha
+bug - making the test flakey.  need to add a check to it's cliked.  while  not click agaign
 Get find capatch to work - You may have to frame it still
