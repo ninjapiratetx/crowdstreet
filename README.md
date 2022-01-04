@@ -32,5 +32,5 @@ pytest
 # Future work
 bug - move the refresh to defaults to press Captacha
 bug - making the test flakey.  need to add a check to it's cliked.  while  not click agaig 
-*workarouhd if doesn't click in the automated chromen
+*workarouhd if doesn't click in the automated chrome browser click the captcha.  The script pauses for 10 secobds for this.n
 Get find capatch to work - You may have to frame it still
