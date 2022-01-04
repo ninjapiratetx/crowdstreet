@@ -27,3 +27,7 @@ export PASSWORD=<your passowrd>
 export PYTHONPATH=$PYTHONPATH:$HOME/crowdstreet
 export PATH=$PATH:<PATH TO where chromedriver is>
 pytest
+
+# Future work
+bug - move the refresh to defaults to press Captacha
+Get find capatch to work - You may have to frame it still
