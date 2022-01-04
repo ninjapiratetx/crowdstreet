@@ -9,6 +9,7 @@ python3 -m pip install --user --upgrade pip
 python3 -m pip install --user virtualenv
 
 ## Install chromedriver
+This is specfic to your version of Chrome.  I'm using Chrome 51.
 https://www.swtestacademy.com/install-chrome-driver-on-mac/
 
 ## Create virtual environment:
@@ -30,5 +31,6 @@ pytest
 
 # Future work
 bug - move the refresh to defaults to press Captacha
-bug - making the test flakey.  need to add a check to it's cliked.  while  not click agaign
+bug - making the test flakey.  need to add a check to it's cliked.  while  not click agaig 
+*workarouhd if doesn't click in the automated chromen
 Get find capatch to work - You may have to frame it still
